@@ -1,0 +1,94 @@
+/* Tela de Propriedades */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+}
+
+form input[type="text"],
+form select {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+form input[type="submit"] {
+  padding: 0.75rem 1rem;
+  background-color: #6BA38C;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: #6c9383;
+}
+
+form p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #1d3557;
+  
+}
+
+.propriedades-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.propriedade-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.propriedade-card:hover {
+  transform: scale(1.02);
+}
+
+.propriedade-card h2 {
+  margin-top: 0;
+  color: #264653;
+}
+
+.propriedade-card button {
+  margin-top: 1rem;
+  background-color: #e76f51;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.propriedade-card button:hover {
+  background-color: #d65a3d;
+}
+
+h1 {
+  text-align: center;
+  color: #1d3557;
+  margin-top: 3rem;
+}
+
+.form-wrapper {
+  margin-top: 3rem;
+}

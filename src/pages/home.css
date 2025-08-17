@@ -1,0 +1,97 @@
+/* estilo.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #DFD4C4;
+  color: #333;
+}
+
+header {
+  background-color: #8CBFEE;
+  padding: 1rem 2rem;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: flex-end;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+nav button {
+  background-color: #e76f51;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+nav button:hover {
+  background-color: #d65a3d;
+}
+
+main {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+main h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #283323;
+}
+
+.usuario-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.usuario-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.usuario-card:hover {
+  transform: scale(1.02);
+}
+
+.usuario-card h2 {
+  margin-top: 0;
+  color: #457b9d;
+}
+
+.usuario-card button {
+  margin-top: 1rem;
+  background-color: #e76f51;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.usuario-card button:hover {
+  background-color: #d65a3d;
+}
