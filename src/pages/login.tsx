@@ -23,7 +23,7 @@ export default function Login() {
       const response = await api.post('/sessions/login', dadosLogin);
       const token = response.data.token;
       localStorage.setItem("token", token);
-      navigate('/');
+      navigate('/home');
     
     } catch (err: any) {
       setErro('Credenciais inválidas');

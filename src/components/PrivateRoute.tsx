@@ -1,24 +1,31 @@
-import { ReactNode, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { isAuthenticated } from "../utils/auth";
-
-interface PrivateRouteProps {
-  children: ReactNode;
+import { createContext, PropsWithChildren, useContext, useState } from "react";
+interface User {
+  id: number;
 }
 
-export default function PrivateRoute({ children }: PrivateRouteProps) {
-  const navigate = useNavigate();
+const AuthContext = createContext<User | null>(null);
 
-  useEffect(() => {
-    if (!isAuthenticated()) {
-      navigate("/login", { replace: true });
-    }
-  }, [navigate]);
+type AuthProviderProps = PropsWithChildren & {
+  isSignedIn: boolean;
+};
 
-  return (
-    <>
-      {children}
-    </>
-  );
+
+
+export default function PrivateRoute(
+  {
+    children,
+    isSignedIn,
+  }: AuthProviderProps) {
+    const [user] = useState<User | null>(isSignedIn ? {id:1} : null);
+    return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
+  }
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+
+  if (context === undefined) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+
+  return context;
 }
-

@@ -35,7 +35,6 @@ export default function Registrar() {
       })
       setNome('')
       setDataDeNascimento('')
-      // setEscolaridade('')
       setEmail('')
       setTelefone('')
       setSenha('')
@@ -46,65 +45,76 @@ export default function Registrar() {
   }
 
   return (
-    <div>
-      <header>
-        <nav>
-          <ul>
-            <li><a href='/'>Usuários</a></li>
-            <li><a href='/registrar'>Cadastrar usuário</a></li>
-            <li><a href='/propriedades'>Propriedades</a></li>
-            <li><a href='/objetos'>Objetos</a></li>
-            <li><button onClick={logout}>Sair</button></li>
-          </ul>
-        </nav>
-      </header>
+    <div className='dashboard'>
+      <div className='side-menu-container'>
+        <h2>Ecoponto (Admin)</h2>
+        <div className='side-menu-links'>
+          <a href='/home'>
+            <span className='menu-text'>Painel principal</span>
+          </a>
+        </div>
+        <div className='side-menu-links'>
+          <a href='/propriedades'>
+            <span className='menu-text'>Propriedades</span>
+          </a>
+        </div>
+        <div className='side-menu-links'>
+          <a href='/objetos'>
+            <span className='menu-text'>Objetos</span>
+          </a>
+        </div>
+        <div className='side-menu-links'>
+          <a href='/registrar'>
+            <span className='menu-text'>Cadastrar usuários</span>
+          </a>
+        </div>
+        <button onClick={logout}>Sair</button>
+      </div>
 
-      <h1>Registrar Novo Usuário</h1>
-      <form onSubmit={handleRegistrar}>
-        <input 
-          type="text" 
-          placeholder="Nome" 
-          value={nome} 
-          onChange={e => setNome(e.target.value)} 
-          required 
-        />
-        <input 
-          type="date" 
-          value={data_de_nascimento} 
-          onChange={e => setDataDeNascimento(e.target.value)} 
-          required 
-        />
-        {/* <select value={escolaridade} onChange={e => setEscolaridade(e.target.value)} required>
-          <option value="">Escolha a escolaridade</option>
-          <option value="fundamental_inc">Ensino fundamental incompleto</option>
-          <option value="medio_inc">Ensino médio incompleto</option>
-          <option value="superior_inc">Ensino superior incompleto</option>
-          <option value="fundamental_com">Ensino fundamental completo</option>
-          <option value="medio_com">Ensino médio completo</option>
-          <option value="superior_com">Ensino superior completo</option>
-        </select> */}
-        <input 
-          type="email" 
-          placeholder="Email" 
-          value={email} 
-          onChange={e => setEmail(e.target.value)} 
-          required 
-        />
-        <input  
-          placeholder="Telefone" 
-          value={telefone} 
-          onChange={e => setTelefone(e.target.value)} 
-          required 
-        />
-        <input  
-          type="password"
-          placeholder="Senha" 
-          value={senha} 
-          onChange={e => setSenha(e.target.value)} 
-          required 
-        />
-        <button type="submit">Registrar</button>
-      </form>
+      <div className='main-container'>
+
+        <h1>Registrar Novo Usuário</h1>
+        <form onSubmit={handleRegistrar}>
+          <input 
+            type="text" 
+            placeholder="Nome" 
+            value={nome} 
+            onChange={e => setNome(e.target.value)} 
+            required 
+          />
+          <div style={{display: "flex", gap: "20px", flexDirection:'row'}}>
+            <input 
+              style={{width:"50%"}}
+              type="date" 
+              value={data_de_nascimento} 
+              onChange={e => setDataDeNascimento(e.target.value)} 
+              required 
+            />
+            <input  
+              style={{width:"50%"}}
+              placeholder="Telefone" 
+              value={telefone} 
+              onChange={e => setTelefone(e.target.value)} 
+              required 
+            />
+          </div>
+          <input 
+            type="email" 
+            placeholder="Email" 
+            value={email} 
+            onChange={e => setEmail(e.target.value)} 
+            required 
+          />
+          <input  
+            type="password"
+            placeholder="Senha" 
+            value={senha} 
+            onChange={e => setSenha(e.target.value)} 
+            required 
+          />
+          <button className='button-add' type="submit">Registrar</button>
+        </form>
+      </div>
     </div>
 
 

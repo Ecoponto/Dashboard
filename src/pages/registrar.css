@@ -3,8 +3,9 @@
 form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
   background-color: #ffffff;
+  width: 40%;
   padding: 2rem;
   border-radius: 8px;
   max-width: 500px;
@@ -27,9 +28,9 @@ form select:focus {
   box-shadow: 0 0 0 2px rgba(69, 123, 157, 0.2);
 }
 
-form button {
+.button-add {
   padding: 0.75rem 1rem;
-  background-color: #6BA38C;
+  background-color: #000000;
   color: white;
   border: none;
   font-weight: bold;
@@ -38,8 +39,13 @@ form button {
   transition: background-color 0.2s ease;
 }
 
-form button:hover {
-  background-color: #6c9383;
+.button-add:hover {
+  background-color: #3b3b3b;
+}
+
+.button-add:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 h1 {
