@@ -18,7 +18,6 @@ export default function ItemForm() {
   const [carregando, setCarregando] = useState(true);
   const [file, setFile] = useState<File | null>(null);
   const [outraPropriedade, setOutraPropriedade] = useState('');
-  let names: Array<string> = []
   const disabled = !file || !outraPropriedade
   useEffect(() => {
     api.get('/types')
@@ -31,25 +30,23 @@ export default function ItemForm() {
         setCarregando(false);
       });
   }, [])
-
-
-  useEffect(() => {
-    for (const element of propriedades) {
-      if (element.id) {
-        api.get(`/types/resolve/${element.id}`)
-          .then(response => {
-            if (response.data.parent) {
-              names.push(response.data.parent.name)
-            }
-            else {
-              names.push('Nenhum')
-            }
-          })
-      }
+  
+  function resolvePropery(id: string) {
+    if (id) {
+      api.get(`/types/resolve/${id}`)
+        .then(response => {
+          if (response.data.parent) {
+            alert(`Agrupado com: ${response.data.parent.name}`)
+          }
+          else {
+            alert("Agrupado com: Nenhum")
+          }
+        })
     }
-  }, [propriedades]);
-
-
+    else {
+      console.error("Erro inesperado!")
+    }
+  }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -57,13 +54,12 @@ export default function ItemForm() {
     }
   };
 
-  const handleAddProperty = (id: string) => {
+  const handleAddProperty = async (id: string) => {
     if (outraPropriedade === id){
       setOutraPropriedade('')
     }
     else {
       setOutraPropriedade(id)
-      console.log(names)
     }
   }
 
@@ -142,7 +138,7 @@ export default function ItemForm() {
                   <p>Descrição: {item.description}</p>
                 </div>
                 <div className='user-actions'>
-                  <button className='info-btn' onClick={() => alert(`Agrupado com: ${names[propriedades.indexOf(item)]}`)}>Info</button>
+                  <button className='info-btn' onClick={() => resolvePropery(item.id)}>Ver agrupamento</button>
                   <button className='info-btn' onClick={() => handleAddProperty(item.id)}>Escolher</button>
                 </div>
               </div>

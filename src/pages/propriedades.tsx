@@ -32,6 +32,22 @@ export default function Propriedades() {
       });
   }, [])
 
+  function resolvePropery(id: string) {
+    if (id) {
+      api.get(`/types/resolve/${id}`)
+        .then(response => {
+          if (response.data.parent) {
+            alert(`Agrupado com: ${response.data.parent.name}`)
+          }
+          else {
+            alert("Agrupado com: Nenhum")
+          }
+        })
+    }
+    else {
+      console.error("Erro inesperado!")
+    }
+  }
 
   const handleDelete = (id: string) => {
     api.delete(`/types/${id}`)
@@ -145,7 +161,7 @@ export default function Propriedades() {
                   <p>Descrição: {usuario.description}</p>
                 </div>
                 <div className='user-actions'>
-                  <button className='info-btn'>Info</button>
+                  <button className='info-btn' onClick={() => resolvePropery(usuario.id)}>Ver agrupamento</button>
                   <button className='delete-btn' onClick={() => handleDelete(usuario.id)}>Remover</button>
                 </div>
               </div>

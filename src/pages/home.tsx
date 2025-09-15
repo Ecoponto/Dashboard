@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import './home.css'
 import { logout } from '../utils/auth';
-import axios from 'axios';
 import api from '../services/api';
 
 type Usuario = {
@@ -57,7 +56,7 @@ export default function Home() {
       <div className='side-menu-container'>
         <h2>Ecoponto (Admin)</h2>
         <div className='side-menu-links'>
-          <a href='/'>
+          <a href='/home'>
             <span className='menu-text'>Painel principal</span>
           </a>
         </div>

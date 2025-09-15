@@ -53,3 +53,26 @@ h1 {
   color: #283323;
   margin-bottom: 2rem;
 }
+
+/* Container para o input + mensagem de erro */
+.form-group {
+  width: 100%;
+  margin-bottom: 15px; /* Ajuste o espaçamento conforme necessário */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilo da mensagem de erro */
+.error-message {
+  color: #d93025; /* Vermelho */
+  font-size: 0.8rem; /* Tamanho pequeno */
+  margin-top: 4px; /* Espaço entre o input e o texto */
+  margin-left: 2px;
+  text-align: left; /* Alinha o texto à esquerda */
+}
+
+/* Opcional: Adicionar uma borda vermelha ao input com erro */
+/* Para isso, você precisaria adicionar uma classe 'has-error' ao input via JS */
+input.has-error {
+  border-color: #d93025;
+} 
