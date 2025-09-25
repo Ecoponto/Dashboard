@@ -37,7 +37,7 @@ export default function Login() {
     <div className='screen'>
       <div className='main-container'>
         <form onSubmit={handleLogin}>
-          <h1>Login</h1>
+          <h1>Bem vindo(a)!</h1>
           {isError && <ErrorBox message={error} onClose={() => setIsError(false)}/>}
           <label style={{marginBottom:-25}}>Email</label>
           <input 

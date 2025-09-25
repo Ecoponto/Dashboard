@@ -115,7 +115,7 @@ export default function VerItens() {
 
       <div className='main-container'>
         <h1>Painel de itens</h1>
-        <div className='users-container' style={itens.length > 3 ? {overflowY: 'scroll'} : {}}>
+        <div className='users-container'>
           {itens.map(item => (
             <div className='user-card' key={item.id}>
               <div className='user-details'>
