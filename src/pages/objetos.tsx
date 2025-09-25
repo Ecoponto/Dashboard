@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import api from '../services/api';
 import './propriedades.css';
 import { logout } from '../utils/auth';
+import axios from 'axios';
 
 type Propriedade = {
   id: string;
@@ -12,13 +13,13 @@ type Propriedade = {
   deepth: number
 }
 
-
 export default function ItemForm() {
   const [propriedades, setPropriedades] = useState<Propriedade[]>([]);
   const [carregando, setCarregando] = useState(true);
   const [file, setFile] = useState<File | null>(null);
   const [outraPropriedade, setOutraPropriedade] = useState('');
   const disabled = !file || !outraPropriedade
+
   useEffect(() => {
     api.get('/types')
       .then(response => {
@@ -30,7 +31,7 @@ export default function ItemForm() {
         setCarregando(false);
       });
   }, [])
-  
+
   function resolvePropery(id: string) {
     if (id) {
       api.get(`/types/resolve/${id}`)
@@ -112,6 +113,11 @@ export default function ItemForm() {
         <div className='side-menu-links'>
           <a href='/registrar'>
             <span className='menu-text'>Cadastrar usuários</span>
+          </a>
+        </div>
+        <div className='side-menu-links'>
+          <a href='/ver-itens'>
+            <span className='menu-text'>Visualizar itens</span>
           </a>
         </div>
         <button onClick={logout}>Sair</button>

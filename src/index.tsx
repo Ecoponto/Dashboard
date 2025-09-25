@@ -9,6 +9,7 @@ import ItemForm from './pages/objetos';
 import PrivateRoute from './components/PrivateRoute';
 import ProtectedRoute from './components/ProtectedRoute';
 import { isAuthenticated } from './utils/auth';
+import VerItens from './pages/veritens';
 
 
 
@@ -47,6 +48,14 @@ const router = createBrowserRouter([
     element: (
       // <ProtectedRoute>
         <ItemForm />
+      // </ProtectedRoute>
+    )
+  },
+  {
+    path: "/ver-itens",
+    element: (
+      // <ProtectedRoute>
+        <VerItens />
       // </ProtectedRoute>
     )
   }
