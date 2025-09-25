@@ -3,6 +3,7 @@ import api from '../services/api';
 import './propriedades.css';
 import { logout } from '../utils/auth';
 import axios from 'axios';
+import { LoadingScreen } from '../components/LoadingScreen';
 
 type Propriedade = {
   id: string;
@@ -88,7 +89,7 @@ export default function ItemForm() {
   
 
   if (carregando) {
-    return <div>Carregando...</div>  
+    return <LoadingScreen />  
   }
 
   return (

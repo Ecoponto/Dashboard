@@ -2,20 +2,21 @@ import React, { useState } from 'react';
 import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import './login.css'
+import { ErrorBox } from '../components/ErrorBox';
 
 export default function Login() {
-  const [username, setusername] = useState('');
-  const [password, setpassword] = useState('');
-  const [erro, setErro] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
-
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErro('');
+    setError('');
 
     const dadosLogin = {
-      username: username,
+      username: email,
       password: password,
     };
 
@@ -26,40 +27,35 @@ export default function Login() {
       navigate('/home');
     
     } catch (err: any) {
-      setErro('Credenciais inválidas');
+      setError('Credenciais inválidas');
+      setIsError(true)
       console.error(err);
     }
   };
 
   return (
-    <div className='main-container'>
-      <div className='login-container'>
-        <h1 className='tittle'>Seja, bem-vindo(a)!</h1>
+    <div className='screen'>
+      <div className='main-container'>
         <form onSubmit={handleLogin}>
-          <div className='input-container'>
-            <input
-              className='input-username'
-              type="username"
-              placeholder="Email"
-              value={username}
-              onChange={e => setusername(e.target.value)}
-              required
+          <h1>Login</h1>
+          {isError && <ErrorBox message={error} onClose={() => setIsError(false)}/>}
+          <label style={{marginBottom:-25}}>Email</label>
+          <input 
+            type="email" 
+            placeholder="Email" 
+            value={email} 
+            onChange={e => setEmail(e.target.value)} 
+            required 
             />
-          </div>
-          <div className='input-container'>
-            <input
-              className='input-password'
-              type="password"
-              placeholder="Senha"
-              value={password}
-              onChange={e => setpassword(e.target.value)}
-              required
+          <label style={{marginBottom:-25}}>Senha</label>
+          <input  
+            type="password"
+            placeholder="Senha" 
+            value={password} 
+            onChange={e => setPassword(e.target.value)} 
+            required 
             />
-          </div>
-          <div className='button-container'>
-            <button className='button-submit' type="submit">Entrar</button>
-          </div>
-          {erro && <p style={{ color: 'red' }}>{erro}</p>}
+          <button className='button-add' type="submit">Entrar</button>
         </form>
       </div>
     </div>

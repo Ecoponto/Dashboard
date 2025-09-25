@@ -3,6 +3,8 @@ import './home.css'
 import { logout } from '../utils/auth';
 import api from '../services/api';
 import axios from 'axios';
+import { url } from 'inspector';
+import { LoadingScreen } from '../components/LoadingScreen';
 
 type Itens = {
   id: string;
@@ -62,8 +64,21 @@ export default function VerItens() {
     loadData();
   }, []);
 
+  const deleteItem = (id: string) => {
+    const confirmar = window.confirm("Tem certeza que deseja excluir este item?");
+    if (!confirmar) return
+    
+    api.delete(`/itens/${id}`)
+      .then(response => {
+        setItens(itens.filter(itens => itens.id !== id));
+      })
+      .catch(error => {
+        console.error('Erro ao buscar usuários:', error);
+    });
+  }
+
   if (carregando) {
-    return <div>Carregando...</div>  
+    return <LoadingScreen /> 
   }
 
   return (
@@ -90,6 +105,11 @@ export default function VerItens() {
             <span className='menu-text'>Cadastrar usuários</span>
           </a>
         </div>
+        <div className='side-menu-links'>
+          <a href='/ver-itens'>
+            <span className='menu-text'>Visualizar itens</span>
+          </a>
+        </div>
         <button onClick={logout}>Sair</button>
       </div>
 
@@ -100,12 +120,12 @@ export default function VerItens() {
             <div className='user-card' key={item.id}>
               <div className='user-details'>
                 <div className='user-info'>
-                  <img src={item.signedUrl}  />
+                  <img src={`https://ecotank.hirameki.me/objects/${item.imageUrl}`}  style={{width:150, height:150}}/>
                   <p>Id: {item.id}</p>
-                  <p>Type: {item.typeId}</p>
+                  <p>Tipo: {item.typeId}</p>
                 </div>
                 <div className='user-actions'>
-                  <button className='delete-btn'>Excluir</button>
+                  <button className='delete-btn' onClick={() => deleteItem(item.id)}>Excluir</button>
                 </div>
               </div>
             </div>

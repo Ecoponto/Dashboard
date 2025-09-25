@@ -22,41 +22,41 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: (
-      // <ProtectedRoute>
+      <ProtectedRoute>
         <Home />
-      // </ProtectedRoute>
+      </ProtectedRoute>
     )
   },
   {
     path: "/propriedades",
     element: (
-      // <ProtectedRoute>
+      <ProtectedRoute>
         <Propriedades />
-      // </ProtectedRoute>
+      </ProtectedRoute>
     )
   },
   {
     path: "/registrar",
     element: (
-      // <ProtectedRoute>
+      <ProtectedRoute>
         <Registrar />
-      // </ProtectedRoute>
+      </ProtectedRoute>
     )
   },
   {
     path: "/objetos",
     element: (
-      // <ProtectedRoute>
+      <ProtectedRoute>
         <ItemForm />
-      // </ProtectedRoute>
+      </ProtectedRoute>
     )
   },
   {
     path: "/ver-itens",
     element: (
-      // <ProtectedRoute>
+      <ProtectedRoute>
         <VerItens />
-      // </ProtectedRoute>
+      </ProtectedRoute>
     )
   }
 ]);
@@ -65,8 +65,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
   <StrictMode>
-    {/* <PrivateRoute isSignedIn={isAuthenticated()}> */}
+    <PrivateRoute isSignedIn={isAuthenticated()}>
       <RouterProvider router={router} />
-    {/* </PrivateRoute> */}
+    </PrivateRoute>
   </StrictMode>
 );

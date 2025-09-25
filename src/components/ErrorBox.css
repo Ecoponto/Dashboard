@@ -1,0 +1,68 @@
+.errorBox {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 20px; /* Espaço abaixo da caixa */
+  
+  /* Cores de erro */
+  background-color: #f8d7da; /* Fundo vermelho claro */
+  color: #721c24; /* Texto vermelho escuro */
+  border: 1px solid #f5c6cb; /* Borda vermelha */
+
+  /* Animação */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.errorIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-right: 12px;
+  
+  /* Círculo para o ícone */
+  width: 24px;
+  height: 24px;
+  background-color: #dc3545;
+  color: #fff;
+  border-radius: 50%;
+  flex-shrink: 0; /* Impede que o ícone encolha */
+}
+
+.errorMessage {
+  margin: 0;
+  flex-grow: 1; /* Faz a mensagem ocupar o espaço disponível */
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #721c24;
+  cursor: pointer;
+  padding: 0 8px;
+  margin-left: 16px;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+/* Animação de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

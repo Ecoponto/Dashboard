@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './home.css'
 import { logout } from '../utils/auth';
 import api from '../services/api';
+import { LoadingScreen } from '../components/LoadingScreen';
 
 type Usuario = {
   id: string;
@@ -48,7 +49,7 @@ export default function Home() {
   }
 
   if (carregando) {
-    return <div>Carregando...</div>  
+    return <LoadingScreen /> 
   }
 
   return (
@@ -73,6 +74,11 @@ export default function Home() {
         <div className='side-menu-links'>
           <a href='/registrar'>
             <span className='menu-text'>Cadastrar usuários</span>
+          </a>
+        </div>
+        <div className='side-menu-links'>
+          <a href='/ver-itens'>
+            <span className='menu-text'>Visualizar itens</span>
           </a>
         </div>
         <button onClick={logout}>Sair</button>

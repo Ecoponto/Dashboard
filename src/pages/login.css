@@ -1,56 +1,106 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+/* Paleta de cores (variáveis CSS para fácil customização) */
+:root {
+  --primary-color: #383838; /* Azul vibrante como cor de destaque */
+  --light-gray: #f0f2f5;
+  --text-color: #333;
+  --border-color: #ddd;
 }
 
-.main-container {
+.screen {
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  background-color: var(--light-gray);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.loginBox {
   width: 100%;
-  background-color: #DFD4C4;
+  max-width: 400px;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.login-container {  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #888;
+  margin-bottom: 30px;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.label {
+  display: block;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.inputField {
   width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.button-container {
-  margin-top: 20px;
-  justify-content: center;
-  display: flex;
+.inputField:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
 }
 
-.input-container {
-  margin-bottom: 10px;
-}
-
-.input-password,
-.input-username {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 250px;
-}
-
-.button-submit {
-  padding: 10px 20px;
-  width: 150px;
-  border-bottom-left-radius: 10px;
-  border-top-right-radius: 10px;
-  background-color: #6BA38C;
+.submitButton {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--primary-color);
   color: white;
   border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
 }
 
-.button-submit:hover {
-  background-color: #5a8a7b;
+.submitButton:hover:not(:disabled) {
+  background-color: #0056b3;
 }
+
+.submitButton:disabled {
+  background-color: #a0c7ff;
+  cursor: not-allowed;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.forgotPassword {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.forgotPassword:hover {
+  text-decoration: underline;
+}
+

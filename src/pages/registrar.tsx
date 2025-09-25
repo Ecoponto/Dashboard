@@ -68,6 +68,11 @@ export default function Registrar() {
             <span className='menu-text'>Cadastrar usuários</span>
           </a>
         </div>
+        <div className='side-menu-links'>
+          <a href='/ver-itens'>
+            <span className='menu-text'>Visualizar itens</span>
+          </a>
+        </div>
         <button onClick={logout}>Sair</button>
       </div>
 
