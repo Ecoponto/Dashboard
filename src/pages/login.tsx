@@ -3,6 +3,7 @@ import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import './login.css'
 import { ErrorBox } from '../components/ErrorBox';
+import { isAuthenticated } from '../utils/auth';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -24,7 +25,8 @@ export default function Login() {
       const response = await api.post('/sessions/login', dadosLogin);
       const token = response.data.token;
       localStorage.setItem("token", token);
-      navigate('/home');
+      isAuthenticated()
+      window.location.href = '/home'
     
     } catch (err: any) {
       setError('Credenciais inválidas');
